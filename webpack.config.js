@@ -1,27 +1,32 @@
+'use strict';
+
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: {
-    app: './src/index.js'
-  },
 
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'app.bundle.js'
-  },
+    entry: './src/index.js',
 
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src/'),
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env']
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/dist/',
+        filename: 'project.bundle.js'
+    },
+
+    module: {
+        rules: [
+          {
+            test: [ /\.vert$/, /\.frag$/ ],
+            use: 'raw-loader'
           }
-        }
-      }
+        ]
+    },
+
+    plugins: [
+        new webpack.DefinePlugin({
+            'CANVAS_RENDERER': JSON.stringify(true),
+            'WEBGL_RENDERER': JSON.stringify(true)
+        })
     ]
-  }
-}
+
+};
