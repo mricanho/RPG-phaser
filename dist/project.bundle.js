@@ -119,6 +119,12 @@ var WorldScene = new Phaser.Class({
 	  var grass = map.createStaticLayer('Grass', tiles, 0, 0);
         var obstacles = map.createStaticLayer('Obstacles', tiles, 0, 0);
         obstacles.setCollisionByExclusion([-1]);
+
+        this.player = this.physics.add.sprite(50, 100, 'player', 6);
+
+        this.physics.world.bounds.width = map.widthInPixels;
+        this.physics.world.bounds.height = map.heightInPixels;
+        this.player.setCollideWorldBounds(true);
   }
 });
 
