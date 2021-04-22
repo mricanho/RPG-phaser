@@ -90,6 +90,8 @@ var WorldScene = new Phaser.Class({
           frameRate: 10,
           repeat: -1
       });
+
+      this.physics.add.collider(this.player, obstacles);
   },
   update: function (time, delta)
 {
@@ -142,6 +144,7 @@ var config = {
       default: 'arcade',
       arcade: {
           gravity: { y: 0 }
+          /* debug:true */
       }
   },
   scene: [
