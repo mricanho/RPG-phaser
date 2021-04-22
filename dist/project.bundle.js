@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-var BootScene = new Phaser.Class({
+const BootScene = new Phaser.Class({
  
   Extends: Phaser.Scene,
 
@@ -97,7 +97,7 @@ var BootScene = new Phaser.Class({
   }
 });
 
-var WorldScene = new Phaser.Class({
+const WorldScene = new Phaser.Class({
 
   Extends: Phaser.Scene,
 
@@ -113,11 +113,11 @@ var WorldScene = new Phaser.Class({
   },
   create: function ()
   {
-    var map = this.make.tilemap({ key: 'map' });
-    var tiles = map.addTilesetImage('spritesheet', 'tiles');
+    const map = this.make.tilemap({ key: 'map' });
+    const tiles = map.addTilesetImage('spritesheet', 'tiles');
         
-	  var grass = map.createStaticLayer('Grass', tiles, 0, 0);
-        var obstacles = map.createStaticLayer('Obstacles', tiles, 0, 0);
+	  const grass = map.createStaticLayer('Grass', tiles, 0, 0);
+        const obstacles = map.createStaticLayer('Obstacles', tiles, 0, 0);
         obstacles.setCollisionByExclusion([-1]);
 
         this.player = this.physics.add.sprite(50, 100, 'player', 6);
@@ -161,10 +161,19 @@ var WorldScene = new Phaser.Class({
       });
 
       this.physics.add.collider(this.player, obstacles);
+
+      this.spawns = this.physics.add.group({ classType: Phaser.GameObjects.Zone });
+      for(var i = 0; i < 30; i++) {
+          var x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
+          var y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
+            // parameters are x, y, width, height
+          this.spawns.create(x, y, 20, 20);            
+      }        
+      this.physics.add.overlap(this.player, this.spawns, this.onMeetEnemy, false, this);
   },
   update: function (time, delta)
-{
-	this.player.body.setVelocity(0);
+  {
+	  this.player.body.setVelocity(0);
  
         // Horizontal movement
         if (this.cursors.left.isDown)
@@ -199,10 +208,21 @@ var WorldScene = new Phaser.Class({
         } else {
           this.player.anims.stop();
         }
-}
+  },
+  onMeetEnemy: function(player, zone) {        
+    // we move the zone to some other location
+    zone.x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
+    zone.y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
+    
+    // shake the world
+    this.cameras.main.shake(300);
+    
+    // start battle 
+  },
+
 });
 
-var config = {
+const config = {
   type: Phaser.AUTO,
   parent: 'content',
   width: 320,
@@ -221,7 +241,7 @@ var config = {
       WorldScene
   ]
 };
-var game = new Phaser.Game(config);
+const game = new Phaser.Game(config);
 
 /***/ })
 /******/ ]);
