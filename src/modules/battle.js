@@ -8,7 +8,7 @@ export const BattleScene = new Phaser.Class({
   {
       Phaser.Scene.call(this, { key: "BattleScene" });
   },
-  create: function ()
+  create()
   {    
       // change the background to green
       this.cameras.main.setBackgroundColor("rgba(0, 200, 0, 0.5)");
@@ -16,7 +16,7 @@ export const BattleScene = new Phaser.Class({
       // on wake event we call startBattle too
       this.sys.events.on('wake', this.startBattle, this);             
   },
-  startBattle: function() {
+  startBattle() {
       // player character - warrior
       const warrior = new PlayerCharacter(this, 250, 50, "player", 1, "Warrior", 100, 20);        
       this.add.existing(warrior);
@@ -42,7 +42,7 @@ export const BattleScene = new Phaser.Class({
       
       this.scene.run("UIScene");        
   },
-  nextTurn: function() {  
+  nextTurn() {  
       // if we have victory or game over
       if(this.checkEndBattle()) {           
           this.endBattle();
@@ -73,7 +73,7 @@ export const BattleScene = new Phaser.Class({
       }
   },     
   // check for game over or victory
-  checkEndBattle: function() {        
+  checkEndBattle() {        
       let victory = true;
       // if all enemies are dead we have victory
       for(let i = 0; i < this.enemies.length; i++) {
@@ -89,14 +89,14 @@ export const BattleScene = new Phaser.Class({
       return victory || gameOver;
   },
   // when the player have selected the enemy to be attacked
-  receivePlayerSelection: function(action, target) {
+  receivePlayerSelection(action, target) {
       if(action == "attack") {            
           this.units[this.index].attack(this.enemies[target]);              
       }
       // next turn in 1.7 seconds
       this.time.addEvent({ delay: 1700, callback: this.nextTurn, callbackScope: this });        
   },    
-  endBattle: function() {       
+  endBattle() {       
       // clear state, remove sprites
       this.heroes.length = 0;
       this.enemies.length = 0;
@@ -127,17 +127,17 @@ export const Unit = new Phaser.Class({
       this.menuItem = null;
   },
   // we will use this to notify the menu item when the unit is dead
-  setMenuItem: function(item) {
+  setMenuItem(item) {
       this.menuItem = item;
   },
   // attack the target unit
-  attack: function(target) {
+  attack(target) {
       if(target.living) {
           target.takeDamage(this.damage);
           this.scene.events.emit("Message", this.type + " attacks " + target.type + " for " + this.damage + " damage");
       }
   },    
-  takeDamage: function(damage) {
+  takeDamage(damage) {
       this.hp -= damage;
       if(this.hp <= 0) {
           this.hp = 0;

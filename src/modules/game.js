@@ -10,7 +10,7 @@ export const BootScene = new Phaser.Class({
       Phaser.Scene.call(this, { key: 'BootScene' });
   },
 
-  preload: function ()
+  preload()
   {
       // map tiles
     this.load.image('tiles', 'assets/map/spritesheet.png');
@@ -30,7 +30,7 @@ export const BootScene = new Phaser.Class({
 
   },
 
-  create: function ()
+  create()
   {
     this.scene.start('WorldScene');
   }
@@ -47,12 +47,12 @@ export const WorldScene = new Phaser.Class({
       Phaser.Scene.call(this, { key: 'WorldScene' });
   },
 
-  preload: function ()
+  preload()
   {
       
   },
   
-  create: function ()
+  create()
   {
     // create the map
     const map = this.make.tilemap({ key: 'map' });
@@ -127,13 +127,13 @@ export const WorldScene = new Phaser.Class({
     // we listen for 'wake' event
     this.sys.events.on('wake', this.wake, this);
   },
-  wake: function() {
+  wake() {
     this.cursors.left.reset();
     this.cursors.right.reset();
     this.cursors.up.reset();
     this.cursors.down.reset();
   },
-  onMeetEnemy: function(player, zone) {        
+  onMeetEnemy(player, zone) {        
       // we move the zone to some other location
       zone.x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
       zone.y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
@@ -146,7 +146,7 @@ export const WorldScene = new Phaser.Class({
       // start battle 
       this.scene.switch('BattleScene');                
   },
-  update: function (time, delta)
+  update(time, delta)
   {
       this.player.body.setVelocity(0);
   
