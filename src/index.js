@@ -1,4 +1,6 @@
-import { BootScene, WorldScene, BattleScene, UIScene } from '../src/modules/game';
+import { BootScene, WorldScene } from '../src/modules/game';
+import { BattleScene, UIScene } from '../src/modules/battle';
+import { UIScene } from '../src/modules/interface';
 
 
 const config = {

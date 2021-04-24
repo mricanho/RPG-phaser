@@ -70,6 +70,10 @@
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_modules_game__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_modules_battle__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_modules_interface__ = __webpack_require__(3);
+
+
 
 
 
@@ -88,10 +92,10 @@ const config = {
       }
   },
   scene: [
-      __WEBPACK_IMPORTED_MODULE_0__src_modules_game__["b" /* BootScene */],
-      __WEBPACK_IMPORTED_MODULE_0__src_modules_game__["d" /* WorldScene */],
-      __WEBPACK_IMPORTED_MODULE_0__src_modules_game__["a" /* BattleScene */],
-      __WEBPACK_IMPORTED_MODULE_0__src_modules_game__["c" /* UIScene */]
+      __WEBPACK_IMPORTED_MODULE_0__src_modules_game__["a" /* BootScene */],
+      __WEBPACK_IMPORTED_MODULE_0__src_modules_game__["b" /* WorldScene */],
+      __WEBPACK_IMPORTED_MODULE_1__src_modules_battle__["a" /* BattleScene */],
+      __WEBPACK_IMPORTED_MODULE_2__src_modules_interface__["a" /* UIScene */]
   ]
 };
 
@@ -102,7 +106,6 @@ const game = new Phaser.Game(config);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
 
 const BootScene = new Phaser.Class({
  
@@ -140,7 +143,7 @@ const BootScene = new Phaser.Class({
     this.scene.start('WorldScene');
   }
 });
-/* harmony export (immutable) */ __webpack_exports__["b"] = BootScene;
+/* harmony export (immutable) */ __webpack_exports__["a"] = BootScene;
 
 
 const WorldScene = new Phaser.Class({
@@ -293,9 +296,15 @@ const WorldScene = new Phaser.Class({
   }
 
 });
-/* harmony export (immutable) */ __webpack_exports__["d"] = WorldScene;
+/* harmony export (immutable) */ __webpack_exports__["b"] = WorldScene;
 
 
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 const BattleScene = new Phaser.Class({
 
   Extends: Phaser.Scene,
@@ -476,6 +485,17 @@ const PlayerCharacter = new Phaser.Class({
   }
 });
 
+
+
+
+
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 const MenuItem = new Phaser.Class({
   Extends: Phaser.GameObjects.Text,
   
@@ -580,46 +600,6 @@ const Menu = new Phaser.Class({
           unit.setMenuItem(this.addMenuItem(unit.type));            
       }
       this.menuItemIndex = 0;
-  }
-});
-
-const HeroesMenu = new Phaser.Class({
-  Extends: Menu,
-  
-  initialize:
-          
-  function HeroesMenu(x, y, scene) {
-      Menu.call(this, x, y, scene);                    
-  }
-});
-
-const ActionsMenu = new Phaser.Class({
-  Extends: Menu,
-  
-  initialize:
-          
-  function ActionsMenu(x, y, scene) {
-      Menu.call(this, x, y, scene);   
-      this.addMenuItem("Attack");
-  },
-  confirm: function() { 
-      // we select an action and go to the next menu and choose from the enemies to apply the action
-      this.scene.events.emit("SelectedAction");        
-  }
-  
-});
-
-const EnemiesMenu = new Phaser.Class({
-  Extends: Menu,
-  
-  initialize:
-          
-  function EnemiesMenu(x, y, scene) {
-      Menu.call(this, x, y, scene);        
-  },       
-  confirm: function() {      
-      // the player has selected the enemy and we send its id with the event
-      this.scene.events.emit("Enemy", this.menuItemIndex);
   }
 });
 
@@ -738,7 +718,7 @@ const UIScene = new Phaser.Class({
       }
   },
 });
-/* harmony export (immutable) */ __webpack_exports__["c"] = UIScene;
+/* harmony export (immutable) */ __webpack_exports__["a"] = UIScene;
 
 
 // the message class extends containter 
@@ -773,6 +753,48 @@ const Message = new Phaser.Class({
       this.visible = false;
   }
 });
+
+const HeroesMenu = new Phaser.Class({
+  Extends: Menu,
+  
+  initialize:
+          
+  function HeroesMenu(x, y, scene) {
+      Menu.call(this, x, y, scene);                    
+  }
+});
+
+const ActionsMenu = new Phaser.Class({
+  Extends: Menu,
+  
+  initialize:
+          
+  function ActionsMenu(x, y, scene) {
+      Menu.call(this, x, y, scene);   
+      this.addMenuItem("Attack");
+  },
+  confirm: function() { 
+      // we select an action and go to the next menu and choose from the enemies to apply the action
+      this.scene.events.emit("SelectedAction");        
+  }
+  
+});
+
+const EnemiesMenu = new Phaser.Class({
+  Extends: Menu,
+  
+  initialize:
+          
+  function EnemiesMenu(x, y, scene) {
+      Menu.call(this, x, y, scene);        
+  },       
+  confirm: function() {      
+      // the player has selected the enemy and we send its id with the event
+      this.scene.events.emit("Enemy", this.menuItemIndex);
+  }
+});
+
+
 
 /***/ })
 /******/ ]);
