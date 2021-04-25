@@ -1,7 +1,7 @@
-import { BootScene, WorldScene } from '../src/modules/game';
-import { BattleScene, UIScene } from '../src/modules/battle';
-import { UIScene } from '../src/modules/interface';
-
+import Phaser from 'phaser';
+import { BootScene, WorldScene } from './modules/game';
+import { BattleScene } from './modules/battle';
+import { UIScene } from './modules/interface';
 
 const config = {
   type: Phaser.AUTO,
@@ -11,18 +11,18 @@ const config = {
   zoom: 2,
   pixelArt: true,
   physics: {
-      default: 'arcade',
-      arcade: {
-          gravity: { y: 0 },
-          debug: true // set to true to view zones
-      }
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 0 },
+      debug: true, // set to true to view zones
+    },
   },
   scene: [
-      BootScene,
-      WorldScene,
-      BattleScene,
-      UIScene
-  ]
+    BootScene,
+    WorldScene,
+    BattleScene,
+    UIScene,
+  ],
 };
 
 const game = new Phaser.Game(config);
