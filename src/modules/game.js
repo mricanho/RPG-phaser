@@ -55,7 +55,7 @@ export const WorldScene = new Phaser.Class({
     const tiles = map.addTilesetImage('spritesheet', 'tiles');
 
     // creating the layers
-    const grass = map.createStaticLayer('Grass', tiles, 0, 0);
+    map.createStaticLayer('Grass', tiles, 0, 0);
     const obstacles = map.createStaticLayer('Obstacles', tiles, 0, 0);
 
     // make all tiles in obstacles collidable
@@ -80,7 +80,7 @@ export const WorldScene = new Phaser.Class({
     // user input
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    //  animation with key 'left', we don't need left and right as we will use one and flip the sprite
+    //  animation with key 'left'
     this.anims.create({
       key: 'left',
       frames: this.anims.generateFrameNumbers('player', { frames: [1, 7, 1, 13] }),
@@ -110,7 +110,7 @@ export const WorldScene = new Phaser.Class({
 
     // where the enemies will be
     this.spawns = this.physics.add.group({ classType: Phaser.GameObjects.Zone });
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 30; i += 1) {
       const x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
       const y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
       // parameters are x, y, width, height
@@ -140,7 +140,7 @@ export const WorldScene = new Phaser.Class({
     // start battle
     this.scene.switch('BattleScene');
   },
-  update(time, delta) {
+  update() {
     this.player.body.setVelocity(0);
 
     // Horizontal movement
