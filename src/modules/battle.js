@@ -1,5 +1,66 @@
 import Phaser from 'phaser';
 
+// base class for heroes and enemies
+export const Unit = new Phaser.Class({
+  Extends: Phaser.GameObjects.Sprite,
+
+  initialize:
+
+  function Unit(scene, x, y, texture, frame, type, hp, damage) {
+    Phaser.GameObjects.Sprite.call(this, scene, x, y, texture, frame);
+    this.type = type;
+    this.maxHp = this.hp;
+    this.hp = hp;
+    this.damage = damage; // default damage
+    this.living = true;
+    this.menuItem = null;
+  },
+  // we will use this to notify the menu item when the unit is dead
+  setMenuItem(item) {
+    this.menuItem = item;
+  },
+  // attack the target unit
+  attack(target) {
+    if (target.living) {
+      target.takeDamage(this.damage);
+      this.scene.events.emit('Message', `${this.type} attacks ${target.type} for ${this.damage} damage`);
+    }
+  },
+  takeDamage(damage) {
+    this.hp -= damage;
+    if (this.hp <= 0) {
+      this.hp = 0;
+      this.menuItem.unitKilled();
+      this.living = false;
+      this.visible = false;
+      this.menuItem = null;
+    }
+  },
+});
+
+export const Enemy = new Phaser.Class({
+  Extends: Unit,
+
+  initialize:
+  function Enemy(scene, x, y, texture, frame, type, hp, damage) {
+    Unit.call(this, scene, x, y, texture, frame, type, hp, damage);
+    this.setScale(1); // Size of the enemy
+  },
+});
+
+const PlayerCharacter = new Phaser.Class({
+  Extends: Unit,
+
+  initialize:
+  function PlayerCharacter(scene, x, y, texture, frame, type, hp, damage) {
+    Unit.call(this, scene, x, y, texture, frame, type, hp, damage);
+    // flip the image so I don"t have to edit it manually
+    this.flipX = true;
+
+    this.setScale(1.5);
+  },
+});
+
 export const BattleScene = new Phaser.Class({
 
   Extends: Phaser.Scene,
@@ -50,7 +111,7 @@ export const BattleScene = new Phaser.Class({
     }
     do {
       // currently active unit
-      this.index++;
+      this.index += 1;
       // if there are no more units, we start again from the first one
       if (this.index >= this.units.length) {
         this.index = 0;
@@ -76,19 +137,19 @@ export const BattleScene = new Phaser.Class({
   checkEndBattle() {
     let victory = true;
     // if all enemies are dead we have victory
-    for (let i = 0; i < this.enemies.length; i++) {
+    for (let i = 0; i < this.enemies.length; i += 1) {
       if (this.enemies[i].living) { victory = false; }
     }
     let gameOver = true;
     // if all heroes are dead we have game over
-    for (let i = 0; i < this.heroes.length; i++) {
+    for (let i = 0; i < this.heroes.length; i += 1) {
       if (this.heroes[i].living) { gameOver = false; }
     }
     return victory || gameOver;
   },
   // when the player have selected the enemy to be attacked
   receivePlayerSelection(action, target) {
-    if (action == 'attack') {
+    if (action === 'attack') {
       this.units[this.index].attack(this.enemies[target]);
     }
     // next turn in 1.7 seconds
@@ -98,7 +159,7 @@ export const BattleScene = new Phaser.Class({
     // clear state, remove sprites
     this.heroes.length = 0;
     this.enemies.length = 0;
-    for (let i = 0; i < this.units.length; i++) {
+    for (let i = 0; i < this.units.length; i += 1) {
       // link item
       this.units[i].destroy();
     }
@@ -107,65 +168,5 @@ export const BattleScene = new Phaser.Class({
     this.scene.sleep('UIScene');
     // return to WorldScene and sleep current BattleScene
     this.scene.switch('WorldScene');
-  },
-});
-
-// base class for heroes and enemies
-export const Unit = new Phaser.Class({
-  Extends: Phaser.GameObjects.Sprite,
-
-  initialize:
-
-  function Unit(scene, x, y, texture, frame, type, hp, damage) {
-    Phaser.GameObjects.Sprite.call(this, scene, x, y, texture, frame);
-    this.type = type;
-    this.maxHp = this.hp = hp;
-    this.damage = damage; // default damage
-    this.living = true;
-    this.menuItem = null;
-  },
-  // we will use this to notify the menu item when the unit is dead
-  setMenuItem(item) {
-    this.menuItem = item;
-  },
-  // attack the target unit
-  attack(target) {
-    if (target.living) {
-      target.takeDamage(this.damage);
-      this.scene.events.emit('Message', `${this.type} attacks ${target.type} for ${this.damage} damage`);
-    }
-  },
-  takeDamage(damage) {
-    this.hp -= damage;
-    if (this.hp <= 0) {
-      this.hp = 0;
-      this.menuItem.unitKilled();
-      this.living = false;
-      this.visible = false;
-      this.menuItem = null;
-    }
-  },
-});
-
-export const Enemy = new Phaser.Class({
-  Extends: Unit,
-
-  initialize:
-  function Enemy(scene, x, y, texture, frame, type, hp, damage) {
-    Unit.call(this, scene, x, y, texture, frame, type, hp, damage);
-    this.setScale(1); // Size of the enemy
-  },
-});
-
-const PlayerCharacter = new Phaser.Class({
-  Extends: Unit,
-
-  initialize:
-  function PlayerCharacter(scene, x, y, texture, frame, type, hp, damage) {
-    Unit.call(this, scene, x, y, texture, frame, type, hp, damage);
-    // flip the image so I don"t have to edit it manually
-    this.flipX = true;
-
-    this.setScale(1.5);
   },
 });
