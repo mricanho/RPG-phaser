@@ -3,6 +3,8 @@ import WorldScene from './modules/world';
 import BootScene from './modules/boot';
 import BattleScene from './modules/battle';
 import UIScene from './modules/interface';
+import Game from './modules/game';
+import GetName from './modules/name';
 
 const config = {
   type: Phaser.AUTO,
@@ -20,6 +22,8 @@ const config = {
   },
   scene: [
     BootScene,
+    Game,
+    GetName,
     WorldScene,
     BattleScene,
     UIScene,
@@ -27,3 +31,5 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
+
+export default game;
