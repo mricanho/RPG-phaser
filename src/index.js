@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import WorldScene from './modules/world';
 import BootScene from './modules/game';
 import BattleScene from './modules/battle';
-import { UIScene } from './modules/interface';
+import UIScene from './modules/interface';
 
 export const config = {
   type: Phaser.AUTO,
