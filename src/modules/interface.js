@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import MenuItem from './menus/menuItem';
 import Message from './menus/message';
+import HeroesMenu from './menus/heroes';
 
 // base menu class, container for menu items
 const Menu = new Phaser.Class({
@@ -77,16 +78,6 @@ const Menu = new Phaser.Class({
       unit.setMenuItem(this.addMenuItem(unit.type));
     }
     this.menuItemIndex = 0;
-  },
-});
-
-const HeroesMenu = new Phaser.Class({
-  Extends: Menu,
-
-  initialize:
-
-  function HeroesMenu(x, y, scene) {
-    Menu.call(this, x, y, scene);
   },
 });
 
