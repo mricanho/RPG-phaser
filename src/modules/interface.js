@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
-import MenuItem from './menus/menuItem'
-
+import MenuItem from './menus/menuItem';
 
 // base menu class, container for menu items
 const Menu = new Phaser.Class({

@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 
 export default class MenuItem extends Phaser.GameObjects.Text {
-
   constructor(x, y, text, scene) {
     super(scene, x, y, text, { color: '#ffffff', align: 'left', fontSize: 15 });
   }
@@ -13,6 +12,7 @@ export default class MenuItem extends Phaser.GameObjects.Text {
   deselect() {
     this.setColor('#ffffff');
   }
+
   // when the associated enemy or player unit is killed
   unitKilled() {
     this.active = false;
