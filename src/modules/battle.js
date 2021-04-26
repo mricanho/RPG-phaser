@@ -2,22 +2,19 @@ import Phaser from 'phaser';
 import PlayerCharacter from './characters/player';
 import Enemy from './characters/enemy';
 
-export const BattleScene = new Phaser.Class({
+export default class BattleScene extends Phaser.Scene {
+  constructor() {
+    super('BattleScene');
+  }
 
-  Extends: Phaser.Scene,
-
-  initialize:
-
-  function BattleScene() {
-    Phaser.Scene.call(this, { key: 'BattleScene' });
-  },
   create() {
     // change the background to green
     this.cameras.main.setBackgroundColor('rgba(0, 200, 0, 0.5)');
     this.startBattle();
     // on wake event we call startBattle too
     this.sys.events.on('wake', this.startBattle, this);
-  },
+  }
+
   startBattle() {
     // player character - warrior
     const warrior = new PlayerCharacter(this, 250, 50, 'player', 1, 'Warrior', 100, 20);
@@ -43,7 +40,8 @@ export const BattleScene = new Phaser.Class({
     this.index = -1; // currently active unit
 
     this.scene.run('UIScene');
-  },
+  }
+
   nextTurn() {
     // if we have victory or game over
     if (this.checkEndBattle()) {
@@ -73,7 +71,8 @@ export const BattleScene = new Phaser.Class({
       // add timer for the next turn, so will have smooth gameplay
       this.time.addEvent({ delay: 1500, callback: this.nextTurn, callbackScope: this });
     }
-  },
+  }
+
   // check for game over or victory
   checkEndBattle() {
     let victory = true;
@@ -87,7 +86,8 @@ export const BattleScene = new Phaser.Class({
       if (this.heroes[i].living) { gameOver = false; }
     }
     return victory || gameOver;
-  },
+  }
+
   // when the player have selected the enemy to be attacked
   receivePlayerSelection(action, target) {
     if (action === 'attack') {
@@ -95,7 +95,8 @@ export const BattleScene = new Phaser.Class({
     }
     // next turn in 1.7 seconds
     this.time.addEvent({ delay: 1700, callback: this.nextTurn, callbackScope: this });
-  },
+  }
+
   endBattle() {
     // clear state, remove sprites
     this.heroes.length = 0;
@@ -109,5 +110,5 @@ export const BattleScene = new Phaser.Class({
     this.scene.sleep('UIScene');
     // return to WorldScene and sleep current BattleScene
     this.scene.switch('WorldScene');
-  },
-});
+  }
+}

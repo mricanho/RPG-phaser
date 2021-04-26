@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { BootScene, WorldScene } from './modules/game';
-import { BattleScene } from './modules/battle';
+import BattleScene from './modules/battle';
 import { UIScene } from './modules/interface';
 
 export const config = {
