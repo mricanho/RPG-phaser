@@ -85,7 +85,7 @@ const HeroesMenu = new Phaser.Class({
 
   initialize:
 
-  function HeroesMenu(x,s y, scene) {
+  function HeroesMenu(x, y, scene) {
     Menu.call(this, x, y, scene);
   },
 });
