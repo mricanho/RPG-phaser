@@ -1,10 +1,10 @@
 import Phaser from 'phaser';
 import WorldScene from './modules/world';
-import BootScene from './modules/game';
+import BootScene from './modules/boot';
 import BattleScene from './modules/battle';
 import UIScene from './modules/interface';
 
-export const config = {
+const config = {
   type: Phaser.AUTO,
   parent: 'content',
   width: 320,
@@ -26,4 +26,4 @@ export const config = {
   ],
 };
 
-export const game = new Phaser.Game(config);
+const game = new Phaser.Game(config);

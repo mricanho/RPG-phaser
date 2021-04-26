@@ -6,7 +6,6 @@ import EnemiesMenu from './menus/enemies';
 
 // User Interface scene
 export default class UIScene extends Phaser.Scene {
-
   constructor() {
     super({ key: 'UIScene' });
   }
@@ -62,6 +61,7 @@ export default class UIScene extends Phaser.Scene {
 
     this.createMenu();
   }
+
   createMenu() {
     // map hero menu items to heroes
     this.remapHeroes();
@@ -70,6 +70,7 @@ export default class UIScene extends Phaser.Scene {
     // first move
     this.battleScene.nextTurn();
   }
+
   onEnemy(index) {
     // when the enemy is selected, we deselect all menus and send event with the enemy id
     this.heroesMenu.deselect();
@@ -78,6 +79,7 @@ export default class UIScene extends Phaser.Scene {
     this.currentMenu = null;
     this.battleScene.receivePlayerSelection('attack', index);
   }
+
   onPlayerSelect(id) {
     // when its player turn, we select the active hero item and the first action
     // then we make actions menu active
@@ -85,20 +87,24 @@ export default class UIScene extends Phaser.Scene {
     this.actionsMenu.select(0);
     this.currentMenu = this.actionsMenu;
   }
+
   // we have action selected and we make the enemies menu active
   // the player needs to choose an enemy to attack
   onSelectedAction() {
     this.currentMenu = this.enemiesMenu;
     this.enemiesMenu.select(0);
   }
+
   remapHeroes() {
     const { heroes } = this.battleScene;
     this.heroesMenu.remap(heroes);
   }
+
   remapEnemies() {
     const { enemies } = this.battleScene;
     this.enemiesMenu.remap(enemies);
   }
+
   onKeyInput(event) {
     if (this.currentMenu && this.currentMenu.selected) {
       if (event.code === 'ArrowUp') {
