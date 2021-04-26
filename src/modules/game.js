@@ -1,14 +1,12 @@
 import Phaser from 'phaser';
 
-export const BootScene = new Phaser.Class({
+export default class BootScene extends Phaser.Scene {
 
-  Extends: Phaser.Scene,
+  
 
-  initialize:
-
-  function BootScene() {
-    Phaser.Scene.call(this, { key: 'BootScene' });
-  },
+  constructor() {
+    super('BootScene');
+  }
 
   preload() {
     // map tiles
@@ -21,17 +19,17 @@ export const BootScene = new Phaser.Class({
     this.load.spritesheet('player', 'assets/RPG_assets.png', { frameWidth: 16, frameHeight: 16 });
 
     // enemies
-    this.load.image('dragonblue', 'assets/dragonblue.png');
+    this.load.image('d ragonblue', 'assets/dragonblue.png');
     this.load.image('dragonorrange', 'assets/dragonorrange.png');
 
     // our two characters
     this.load.spritesheet('player', 'assets/RPG_assets.png', { frameWidth: 16, frameHeight: 16 });
-  },
+  }
 
   create() {
     this.scene.start('WorldScene');
-  },
-});
+  }
+}
 
 export const WorldScene = new Phaser.Class({
 
