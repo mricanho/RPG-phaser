@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import MenuItem from './menus/menuItem';
 import Message from './menus/message';
 import HeroesMenu from './menus/heroes';
+import ActionsMenu from './menus/action';
 
 // base menu class, container for menu items
 const Menu = new Phaser.Class({
@@ -79,22 +80,6 @@ const Menu = new Phaser.Class({
     }
     this.menuItemIndex = 0;
   },
-});
-
-const ActionsMenu = new Phaser.Class({
-  Extends: Menu,
-
-  initialize:
-
-  function ActionsMenu(x, y, scene) {
-    Menu.call(this, x, y, scene);
-    this.addMenuItem('Attack');
-  },
-  confirm() {
-    // we select an action and go to the next menu and choose from the enemies to apply the action
-    this.scene.events.emit('SelectedAction');
-  },
-
 });
 
 const EnemiesMenu = new Phaser.Class({
