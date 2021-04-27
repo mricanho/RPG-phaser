@@ -8,6 +8,7 @@ import BattleScene from './modules/battle';
 import UIScene from './modules/interface';
 import Scores from './modules/scores';
 import GameOver from './modules/gameOver';
+import Instructions from './modules/instructions';
 
 const config = {
   type: Phaser.AUTO,
@@ -27,6 +28,7 @@ const config = {
     BootScene,
     Game,
     GetName,
+    Instructions,
     WorldScene,
     BattleScene,
     UIScene,

@@ -29,20 +29,20 @@ export default class GameOver extends Phaser.Scene {
     this.add.text(
       game.config.width / 2,
       20,
-      'Thanks for Playing', {
+      "To be continue...", {
         fill: '#ffffff',
         fontSize: '32px',
-        fontFamily: 'Georgias, Times, serif',
+        fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
 
     this.add.text(
       game.config.width / 2,
       50,
-      "Karen's adventure", {
+      "Karen's Adventure", {
         fill: '#ffffff',
         fontSize: '32px',
-        fontFamily: 'Georgias, Times, serif',
+        fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
 
@@ -52,7 +52,7 @@ export default class GameOver extends Phaser.Scene {
       'Your Score:', {
         fill: '#ffffff',
         fontSize: '24px',
-        fontFamily: 'Georgias, Times, serif',
+        fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
 
@@ -61,8 +61,8 @@ export default class GameOver extends Phaser.Scene {
       140,
       `${window.playerName}: ${window.score}`, {
         fill: '#ffffff',
-        fontSize: '24px',
-        fontFamily: 'Georgias, Times, serif',
+        fontSize: '22px',
+        fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
 
@@ -72,7 +72,7 @@ export default class GameOver extends Phaser.Scene {
       'Back to Main Menu', {
         fill: '#ffffff',
         fontSize: '24px',
-        fontFamily: 'Georgias, Times, serif',
+        fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
 

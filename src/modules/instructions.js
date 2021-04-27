@@ -15,24 +15,24 @@ export default class Instructions extends Phaser.Scene {
   }
 
   create() {
-    this.cameras.main.setBackgroundColor('#567d46');
+    this.cameras.main.setBackgroundColor('#F3C5F8');
     this.add.text(
       game.config.width / 2,
       25,
-      "Karen's adventure", {
-        fill: '#ffffff',
-        fontSize: '32px',
-        fontFamily: 'Georgias, Times, serif',
+      "Karen's Adventure", {
+        fill: '#DAF7A6',
+        fontSize: '30px',
+        fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
 
     this.add.text(
       game.config.width / 2,
       60,
-      'Move Around The World With Arrow Keys. \nOn Battle, Choose Action on Menu With Space Bar or Left Arrow Key. Kill Dragons to Score Up. \nAfter a Win, Heroes are Healed. Low Life Means Double Damage', {
+      'Use the arrow keys on your keyboard to move through the world. \nOnce you are fighting, select your action with Space Bar or the left arrow key. Defeat people to gain points for you score. \nAfter a Win, Karen and her bestie gain a little bit of Health. If you have low life you can deal double damage', {
         fill: '#ffffff',
-        fontSize: '16px',
-        fontFamily: 'Georgias, Times, serif',
+        fontSize: '12px',
+        fontFamily: 'sans-serif',
         align: 'center',
         wordWrap: { width: 260, useAdvancedWrap: true },
       },
@@ -44,7 +44,7 @@ export default class Instructions extends Phaser.Scene {
       'Back', {
         fill: '#ffffff',
         fontSize: '24px',
-        fontFamily: 'Georgias, Times, serif',
+        fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
 

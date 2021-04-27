@@ -25,22 +25,22 @@ export default class Scores extends Phaser.Scene {
         70 + 25 * i,
         `${list[i].user}   ${list[i].score}`, {
           fill: '#ffff00',
-          fontSize: '24px',
-          fontFamily: 'Georgias, Times, serif',
+          fontSize: '20px',
+          fontFamily: 'sans-serif',
         },
       ).setOrigin(0.5);
     }
   }
 
   async create() {
-    this.cameras.main.setBackgroundColor('#567d46');
+    this.cameras.main.setBackgroundColor('#F3C5F8');
     this.add.text(
       game.config.width / 2,
       25,
-      'Monsters Hunter', {
-        fill: '#ffffff',
-        fontSize: '32px',
-        fontFamily: 'Georgias, Times, serif',
+      "Karen's Adventure", {
+        fill: '#DAF7A6',
+        fontSize: '30px',
+        fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
 
@@ -53,7 +53,7 @@ export default class Scores extends Phaser.Scene {
       'Back', {
         fill: '#ffffff',
         fontSize: '24px',
-        fontFamily: 'Georgias, Times, serif',
+        fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
 

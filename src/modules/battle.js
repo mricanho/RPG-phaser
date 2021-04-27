@@ -14,7 +14,7 @@ export default class BattleScene extends Phaser.Scene {
     this.warriorHP = 90;
     this.mageHP = 80;
     this.score = 0;
-    this.cameras.main.setBackgroundColor('rgba(0, 200, 0, 0.5)');
+    this.cameras.main.setBackgroundColor('#FDEDFF');
     this.startBattle();
     this.sys.events.on('wake', this.startBattle, this);
   }
@@ -22,7 +22,7 @@ export default class BattleScene extends Phaser.Scene {
   generateRandomEnemies() {
     const all = ['dragonblue', 'dragonorrange', 'bat', 'ghost'];
     const names = ['Blue D.', 'Orange D.', 'Bat', 'Ghost'];
-    const HPs = [14, 19, 40, 29];
+    const HPs = [34, 39, 40, 39];
     const dmg = [35, 32, 24, 30];
 
     // for the first enemy:
@@ -136,14 +136,14 @@ export default class BattleScene extends Phaser.Scene {
   endBattle() {
     if (this.heroes.length === 2) {
       if (this.heroes[0].hp > 0) {
-        this.heroes[0].hp += 12;
+        this.heroes[0].hp += 10;
         if (this.heroes[0].hp > this.heroes[0].maxHP) {
           this.heroes[0].hp = this.heroes[0].maxHP;
         }
       }
 
       if (this.heroes[1].hp > 0) {
-        this.heroes[1].hp += 12;
+        this.heroes[1].hp += 10;
         if (this.heroes[1].hp > this.heroes[1].maxHP) {
           this.heroes[1].hp = this.heroes[1].maxHP;
         }
