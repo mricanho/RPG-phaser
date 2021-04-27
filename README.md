@@ -1,9 +1,14 @@
 # Karen's Adventure - Phaser RPG
-Karen is a big fan of the Jonas Brothers, and now they will be in town. Help Karen to get to the concert, fight all the opposition as her mother, a ticket reseller, and many more to attend the supreme event.
 
-This app is optimized for desktops and tablets, mobile isn't a good experience.
+Karen is a big fan of the Jonas Brothers, and now they will be in town. Help Karen to get to the concert, fight all the opposition as her mother, a ticket reseller, crazy fans, and many more to attend the supreme event.
+
+This game was created using the framework Phaser 3 and JavaScript, I add test units with Jest and the functions are modules, best practices incorporated(ES6).
+
+This game is optimized for desktops and tablets, mobile isn't a good experience.
 
 ![screenshot](dist/assets/screen-1.jpeg)
+
+# Intructions
 
 ![screenshot](dist/assets/screen-2.jpeg)
 
@@ -13,6 +18,18 @@ This app is optimized for desktops and tablets, mobile isn't a good experience.
 
 [You can play the game HERE!](https://nervous-hypatia-7cd6e3.netlify.app/)
 
+## Game Functionality
+
+# Objective
+- Defeat all the people to get Karen to the concert
+# Controls
+- Press ⬆️ to move up
+- Press ⬇️ to move down
+- Press ➡️ to go right
+- Press ⬅️ to go left
+# Controls in Battle
+- Press ⬆️ or ⬇️ to select who you are going to attack
+- Press Space to attack
 ## Built With
 
 - JavaScript
