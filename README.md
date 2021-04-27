@@ -16,7 +16,7 @@ This game is optimized for desktops and tablets, mobile isn't a good experience.
 
 ![screenshot](dist/assets/screen-1.jpeg)
 
-### Instructions
+#### Instructions
 
 ![screenshot](dist/assets/screen-2.jpeg)
 
@@ -113,9 +113,10 @@ Give a star if you :star: like this project!
 ## Acknowledgments
 
 - Microverse
-- GitHub
+- GitHub 
 - [Opengameart](https://opengameart.org/) for the images
-- Phaser for the documentation
+- The audio comes from [8 bit universe](https://www.youtube.com/user/8BitUniverseMusic)
+- [Phaser](http://phaser.io/) for the documentation and tutorials
 - JavaScript
 
 This project is [MIT](LICENSE) licensed.
