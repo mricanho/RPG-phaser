@@ -54,7 +54,7 @@ npm install
 ```bash
 yarn start
 ```
-- Go to the dist folder and select index.html, now Open the live server on your VScode `Alt + L` then `Alt + o`
+- Go to the dist folder and select index.html, now Open the live server on your VScode `Alt + L` then `Alt + O`
 
 ## How to run the Tests
 
