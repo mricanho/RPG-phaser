@@ -19,10 +19,10 @@ export default class BootScene extends Phaser.Scene {
     this.load.spritesheet('player', 'assets/RPG_assets.png', { frameWidth: 16, frameHeight: 16 });
 
     // enemies
-    this.load.image('dragonblue', 'assets/leidy.png');
-    this.load.image('dragonorrange', 'assets/dragonorrange.png');
-    this.load.image('bat', 'assets/bat.gif');
-    this.load.image('ghost', 'assets/fan.png');
+    this.load.image('leidy', 'assets/leidy.png');
+    this.load.image('reseller', 'assets/re-seller.png');
+    this.load.image('ximena', 'assets/spidey.png');
+    this.load.image('fan', 'assets/fan.png');
 
     // audios
     this.load.audio('gameIntro', 'assets/audios/sucker.mp3');

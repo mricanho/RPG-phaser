@@ -20,8 +20,8 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   generateRandomEnemies() {
-    const all = ['dragonblue', 'dragonorrange', 'bat', 'ghost'];
-    const names = ['Blue D.', 'Orange D.', 'Bat', 'Ghost'];
+    const all = ['leidy', 'reseller', 'ximena', 'fan'];
+    const names = ['Leidy', 'Ticket Reseller', 'Ximena', 'Crazy Fan'];
     const HPs = [34, 39, 40, 39];
     const dmg = [35, 32, 24, 30];
 
