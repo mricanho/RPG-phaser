@@ -34,6 +34,11 @@ You can move through the map to find the concert spot, if you encounter an enemy
 ### Assets
 I tried to find good matches for this game, the audios are from an 8-bit version of some Jonas Brothers songs, I create the background and try to match everything to pink which is the predominant color. The images come from Opengameart, and I did some modifications to them.
 
+#### Heroes
+| Asset  | Heroe_ |
+| ------------- | ------------- |
+| ![Karen](dist/assets/karen.png)  | Karen |
+| ![Karen's mother](dist/assets/re-seller.png)   | Ticket Reseller  |
 #### Enemies
 | Asset  | Enemy |
 | ------------- | ------------- |
