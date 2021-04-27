@@ -13,24 +13,27 @@ export default class GameOver extends Phaser.Scene {
     this.backButton.on('pointerdown', () => {
       window.score = 0;
       this.scene.start('Game');
+      if (window.worldMusic === true) {
+        game.worldMusic.stop();
+      }
     });
   }
 
   create() {
-    this.cameras.main.setBackgroundColor('#567d46');
+    this.cameras.main.setBackgroundColor('#F3C5F8');
 
-    window.worldMusic = false;
+    window.worldMusic = true;
     window.battleMusic = false;
-    window.bgMusic = true;
-    game.worldMusic.stop();
+    window.bgMusic = false;
+    game.worldMusic.play();
     game.battleMusic.stop();
-    game.bgMusic.play();
+    game.bgMusic.stop();
 
     this.add.text(
       game.config.width / 2,
       20,
-      "To be continue...", {
-        fill: '#ffffff',
+      "Karen's Adventure", {
+        fill: '#DAF7A6',
         fontSize: '32px',
         fontFamily: 'sans-serif',
       },
@@ -39,9 +42,9 @@ export default class GameOver extends Phaser.Scene {
     this.add.text(
       game.config.width / 2,
       50,
-      "Karen's Adventure", {
+      "To be continue", {
         fill: '#ffffff',
-        fontSize: '32px',
+        fontSize: '28px',
         fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);

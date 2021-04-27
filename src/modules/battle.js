@@ -179,6 +179,12 @@ export default class BattleScene extends Phaser.Scene {
     } else {
       // return WS
       this.scene.switch('WorldScene');
+      if (window.bgMusic === false) {
+        window.battleMusic = false;
+        game.battleMusic.stop();
+        window.bgMusic = true;
+        game.bgMusic.play();
+      }
     }
   }
 

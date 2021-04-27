@@ -44,7 +44,7 @@ export default class Game extends Phaser.Scene {
       'START GAME',
       24, {
         fill: '#ffffff',
-        fontSize: '26px',
+        fontSize: '27px',
         fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
@@ -55,7 +55,7 @@ export default class Game extends Phaser.Scene {
       'HOW TO PLAY',
       24, {
         fill: '#ffffff',
-        fontSize: '26px',
+        fontSize: '27px',
         fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
@@ -66,7 +66,7 @@ export default class Game extends Phaser.Scene {
       'SCORES',
       24, {
         fill: '#ffffff',
-        fontSize: '26px',
+        fontSize: '27px',
         fontFamily: 'sans-serif',
       },
     ).setOrigin(0.5);
