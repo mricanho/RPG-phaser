@@ -5,6 +5,10 @@ This app is optimized for desktops and tablets, mobile isn't a good experience.
 
 ![screenshot](dist/assets/screen-1.jpeg)
 
+![screenshot](dist/assets/screen-2.jpeg)
+
+![screenshot](dist/assets/screen-3.jpeg)
+
 ## Live demo
 
 [You can play the game HERE!](https://nervous-hypatia-7cd6e3.netlify.app/)
@@ -16,6 +20,7 @@ This app is optimized for desktops and tablets, mobile isn't a good experience.
 - CSS
 - Webpack
 - Phaser 3
+- Jest
 
 ## How to start the project from your Local environment
 
@@ -34,6 +39,12 @@ yarn start
 ```
 - Go to the dist folder and select index.html, now Open the live server on your VScode `Alt + L` then `Alt + o`
 
+## How to run the Tests
+
+It's super easy to run the tests using Jest, in the root directory, go to your terminal and run:
+```bash
+yarn jest
+```
 ## Author
 
 👤 **Miguel Ricaño**
