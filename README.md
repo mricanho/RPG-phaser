@@ -1,13 +1,13 @@
 # Karen's Adventure - Phaser RPG
-EasyWeather is a project in which I use OpenWeather API to display the temp and conditions of the weather of the desired city.
+Karen is a big fan of the Jonas Brothers, and now they will be in town. Help Karen to get to the concert, fight all the opposition as her mother, a ticket reseller, and many more to attend the supreme event.
 
-This app is optimized for desktop, mobile isn't a good experience.
+This app is optimized for desktops and tablets, mobile isn't a good experience.
 
-![screenshot](dist/assets/img/screenshot.jpeg)
+![screenshot](dist/assets/screen-1.jpeg)
 
 ## Live demo
 
-[live demo](https://rawcdn.githack.com/mricanho/weather-app/37a319bdc46aeddcc8164359331defec361fd294/dist/index.html)
+[You can play the game HERE!](https://nervous-hypatia-7cd6e3.netlify.app/)
 
 ## Built With
 
@@ -15,25 +15,22 @@ This app is optimized for desktop, mobile isn't a good experience.
 - HTML
 - CSS
 - Webpack
-- Package.json
-- OpenWeather API
-- Geocode API
+- Phaser 3
 
 ## How to start the project from your Local environment
 
 - Open your terminal and cd where you want to store the project
 - To clone the repository run the following command:
 ```bash
-git clone https://github.com/mricanho/Restaurant-page.git
+git clone https://github.com/mricanho/RPG-phaser.git
 ```
-- Change directory to point to the Restaurant-page dir.
 - Now run:
 ```bash
 npm install
 ```
 - Finally run:
 ```bash
-npm start
+yarn start
 ```
 - Go to the dist folder and select index.html, now Open the live server on your VScode `Alt + L` then `Alt + o`
 
