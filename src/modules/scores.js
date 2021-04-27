@@ -25,7 +25,7 @@ export default class Scores extends Phaser.Scene {
         70 + 25 * i,
         `${list[i].user}   ${list[i].score}`, {
           fill: '#ffff00',
-          fontSize: '20px',
+          fontSize: '24px',
           fontFamily: 'sans-serif',
         },
       ).setOrigin(0.5);

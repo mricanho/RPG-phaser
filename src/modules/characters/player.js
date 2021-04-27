@@ -5,6 +5,6 @@ export default class PlayerCharacter extends Unit {
     super(scene, x, y, texture, frame, type, hp, damage, 1.3);
 
     this.flipX = true;
-    this.setScale(2);
+    this.setScale(1.5);
   }
 }
