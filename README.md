@@ -35,7 +35,11 @@ You can move through the map to find the concert spot, if you encounter an enemy
 I tried to find good matches for this game, the audios are from an 8-bit version of some Jonas Brothers songs, I create the background and try to match everything to pink which is the predominant color. The images come from Opengameart, and I did some modifications to them.
 
 #### Enemies
-![Karen's mother](dist/assets/leidy.png)
+| Asset  | Enemy |
+| ------------- | ------------- |
+| ![Karen's mother](dist/assets/leidy.png)  | Karen's mother  |
+| Content Cell  | Content Cell  |
+
 ### Controls
 - Press ⬆️ to move up
 - Press ⬇️ to move down
