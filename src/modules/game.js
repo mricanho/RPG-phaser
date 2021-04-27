@@ -1,5 +1,4 @@
 /* eslint-disable import/no-cycle */
-
 import Phaser from 'phaser';
 import game from '../index';
 

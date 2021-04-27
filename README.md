@@ -8,7 +8,7 @@ This game is optimized for desktops and tablets, mobile isn't a good experience.
 
 ![screenshot](dist/assets/screen-1.jpeg)
 
-# Intructions
+### Instructions
 
 ![screenshot](dist/assets/screen-2.jpeg)
 
@@ -18,16 +18,27 @@ This game is optimized for desktops and tablets, mobile isn't a good experience.
 
 [You can play the game HERE!](https://nervous-hypatia-7cd6e3.netlify.app/)
 
-## Game Functionality
+# Game Design
 
-# Objective
-- Defeat all the people to get Karen to the concert
-# Controls
+## Introduction
+
+I need to create an RPG game, that has at least when the battle scene and different kinds of enemies and allies.
+
+## Story and Gameplay
+Karen is a super big fan of the Jonas Brothers, and now they will be in town. But of course, life is not easy, and to finally achieve going to the incredible concert she needs to surpass any obstacle, from her mother not giving her permission to go to the concert, a crazy fan that wants to steal her ticket for the show, a ticket reseller with ridiculous prices and her friend who thinks that the Jonas Brothers are garbage. Help Karen to get to the concert, fight all the opposition. 
+
+You can move through the map to find the concert spot, if you encounter an enemy, fight them and continue your journey, if they defeat you lost the opportunity to go to the concert and the game is over.
+## Objective
+- Defeat all the people to get Karen to the concert.
+
+## Assets
+I tried to find good matches for this game, the audios are from an 8-bit version of some Jonas Brothers songs, I create the background and try to match everything to pink which is the predominant color. The images come from Opengameart, and I did some modifications to them.
+### Controls
 - Press ⬆️ to move up
 - Press ⬇️ to move down
 - Press ➡️ to go right
 - Press ⬅️ to go left
-# Controls in Battle
+## Controls in Battle
 - Press ⬆️ or ⬇️ to select who you are going to attack
 - Press Space to attack
 ## Built With
@@ -81,7 +92,8 @@ Give a star if you :star: like this project!
 
 - Microverse
 - GitHub
-- Opengameart
+- [Opengameart](https://opengameart.org/) for the images
+- Phaser for the documentation
 - JavaScript
 
 This project is [MIT](LICENSE) licensed.
