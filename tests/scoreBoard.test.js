@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { scoreBoard } from '../api/scoreboard';
+import { scoreBoard } from '../src/api/scoreboard';
 
 global.fetch = jest.fn(() => Promise.resolve({
   json: () => Promise.resolve({ result: {} }),
