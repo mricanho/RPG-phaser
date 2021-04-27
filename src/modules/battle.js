@@ -1,6 +1,8 @@
+/* eslint-disable import/no-cycle */
 import Phaser from 'phaser';
 import PlayerCharacter from './characters/player';
 import Enemy from './characters/enemy';
+import game from '../index';
 
 export default class BattleScene extends Phaser.Scene {
   constructor() {
@@ -9,83 +11,92 @@ export default class BattleScene extends Phaser.Scene {
 
   create() {
     // change the background to green
+    this.warriorHP = 90;
+    this.mageHP = 80;
+    this.score = 0;
     this.cameras.main.setBackgroundColor('rgba(0, 200, 0, 0.5)');
     this.startBattle();
-    // on wake event we call startBattle too
     this.sys.events.on('wake', this.startBattle, this);
   }
 
+  generateRandomEnemies() {
+    const all = ['dragonblue', 'dragonorrange', 'bat', 'ghost'];
+    const names = ['Blue D.', 'Orange D.', 'Bat', 'Ghost'];
+    const HPs = [14, 19, 40, 29];
+    const dmg = [35, 32, 24, 30];
+
+    // for the first enemy:
+    const one = Math.floor(Math.random() * all.length);
+
+    const fstEnemy = new Enemy(this, 50, 40, all[one], null, names[one], HPs[one], dmg[one]);
+    this.add.existing(fstEnemy);
+
+    // for the second enemy:
+    const two = Math.floor(Math.random() * all.length);
+    const secEnemy = new Enemy(this, 50, 110, all[two], null, names[two], HPs[two], dmg[two]);
+    this.add.existing(secEnemy);
+
+    return [fstEnemy, secEnemy];
+  }
+
   startBattle() {
-    // player character - warrior
-    const warrior = new PlayerCharacter(this, 250, 50, 'player', 1, 'Warrior', 100, 20);
-    this.add.existing(warrior);
+    window.bgMusic = false;
+    window.worldMusic = false;
+    window.battleMusic = true;
+    game.bgMusic.stop();
+    game.worldMusic.stop();
+    game.battleMusic.play();
 
-    // player character - mage
-    const mage = new PlayerCharacter(this, 250, 100, 'player', 4, 'Mage', 80, 8);
-    this.add.existing(mage);
+    this.heroes = [];
+    // player character ==> warrior
+    if (this.warriorHP > 0) {
+      const warrior = new PlayerCharacter(this, 250, 50, 'player', 1, 'Warrior', this.warriorHP, 12);
+      this.add.existing(warrior);
+      this.heroes = this.heroes.concat(warrior);
+    }
+    // player character ==> mage
+    if (this.mageHP > 0) {
+      const mage = new PlayerCharacter(this, 250, 100, 'player', 4, 'Mage', this.mageHP, 22);
+      this.add.existing(mage);
+      this.heroes = this.heroes.concat(mage);
+    }
 
-    const dragonblue = new Enemy(this, 50, 50, 'dragonblue', null, 'Dragon', 50, 3);
-    this.add.existing(dragonblue);
+    // enemies
+    this.enemies = this.generateRandomEnemies();
 
-    const dragonOrange = new Enemy(this, 50, 100, 'dragonorrange', null, 'Dragon2', 50, 3);
-    this.add.existing(dragonOrange);
-
-    // array with heroes
-    this.heroes = [warrior, mage];
-    // array with enemies
-    this.enemies = [dragonblue, dragonOrange];
-    // array with both parties, who will attack
     this.units = this.heroes.concat(this.enemies);
-
-    this.index = -1; // currently active unit
+    this.index = -1;
 
     this.scene.run('UIScene');
   }
 
   nextTurn() {
-    // if we have victory or game over
     if (this.checkEndBattle()) {
       this.endBattle();
       return;
     }
     do {
-      // currently active unit
       this.index += 1;
-      // if there are no more units, we start again from the first one
+      // if there are no more units, start again from 1st one
       if (this.index >= this.units.length) {
         this.index = 0;
       }
     } while (!this.units[this.index].living);
+
     // if its player hero
     if (this.units[this.index] instanceof PlayerCharacter) {
-      // we need the player to select action and then enemy
       this.events.emit('PlayerSelect', this.index);
-    } else { // else if its enemy unit
-      // pick random living hero to be attacked
+    } else {
+      // random index for attacking
       let r;
       do {
         r = Math.floor(Math.random() * this.heroes.length);
       } while (!this.heroes[r].living);
-      // call the enemy's attack function
+      // call attack function with enemy attacking random chosen hero to attack
       this.units[this.index].attack(this.heroes[r]);
-      // add timer for the next turn, so will have smooth gameplay
+      // add timer for next turn
       this.time.addEvent({ delay: 1500, callback: this.nextTurn, callbackScope: this });
     }
-  }
-
-  // check for game over or victory
-  checkEndBattle() {
-    let victory = true;
-    // if all enemies are dead we have victory
-    for (let i = 0; i < this.enemies.length; i += 1) {
-      if (this.enemies[i].living) { victory = false; }
-    }
-    let gameOver = true;
-    // if all heroes are dead we have game over
-    for (let i = 0; i < this.heroes.length; i += 1) {
-      if (this.heroes[i].living) { gameOver = false; }
-    }
-    return victory || gameOver;
   }
 
   // when the player have selected the enemy to be attacked
@@ -97,18 +108,82 @@ export default class BattleScene extends Phaser.Scene {
     this.time.addEvent({ delay: 1700, callback: this.nextTurn, callbackScope: this });
   }
 
+  exitBattle() {
+    this.scene.sleep('UIScene');
+    this.scene.switch('WorldScene');
+  }
+
+  wake() {
+    this.scene.restart('UIScene');
+    this.time.addEvent({ delay: 5000, callback: this.exitBattle, callbackScope: this });
+  }
+
+  checkEndBattle() {
+    let victory = true;
+    let gameOver = true;
+
+    for (let i = 0; i < this.enemies.length; i += 1) {
+      if (this.enemies[i].living) victory = false;
+    }
+
+    for (let i = 0; i < this.heroes.length; i += 1) {
+      if (this.heroes[i].living) { gameOver = false; }
+    }
+
+    return victory || gameOver;
+  }
+
   endBattle() {
-    // clear state, remove sprites
+    if (this.heroes.length === 2) {
+      if (this.heroes[0].hp > 0) {
+        this.heroes[0].hp += 12;
+        if (this.heroes[0].hp > this.heroes[0].maxHP) {
+          this.heroes[0].hp = this.heroes[0].maxHP;
+        }
+      }
+
+      if (this.heroes[1].hp > 0) {
+        this.heroes[1].hp += 12;
+        if (this.heroes[1].hp > this.heroes[1].maxHP) {
+          this.heroes[1].hp = this.heroes[1].maxHP;
+        }
+      }
+      this.warriorHP = this.heroes[0].hp;
+      this.mageHP = this.heroes[1].hp;
+    } else if (this.heroes.length === 1 && this.heroes[0].hp > 0) { // heroes.length == 1
+      if (this.heroes[0].type === 'Warrior') {
+        this.warriorHP = this.heroes[0].hp + 12;
+      } else if (this.heroes[0].type === 'Mage') {
+        this.mageHP = this.heroes[0].hp + 12;
+      }
+    } else if (this.heroes.length === 1 && this.heroes[0].hp <= 0) {
+      if (this.heroes[0].type === 'Warrior') {
+        this.warriorHP = 0;
+      } else {
+        this.mageHP = 0;
+      }
+    }
+
     this.heroes.length = 0;
     this.enemies.length = 0;
+
     for (let i = 0; i < this.units.length; i += 1) {
-      // link item
       this.units[i].destroy();
     }
     this.units.length = 0;
-    // sleep the UI
+
     this.scene.sleep('UIScene');
-    // return to WorldScene and sleep current BattleScene
-    this.scene.switch('WorldScene');
+
+    if (this.warriorHP <= 0 && this.mageHP <= 0) {
+      this.gameIsOver();
+    } else {
+      // return WS
+      this.scene.switch('WorldScene');
+    }
+  }
+
+  gameIsOver() {
+    this.scene.stop('WorldScene');
+    this.scene.start('GameOver');
   }
 }

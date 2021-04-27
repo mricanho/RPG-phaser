@@ -1,10 +1,13 @@
+/* eslint-disable import/no-cycle */
 import Phaser from 'phaser';
 import WorldScene from './modules/world';
+import Game from './modules/game';
+import GetName from './modules/name';
 import BootScene from './modules/boot';
 import BattleScene from './modules/battle';
 import UIScene from './modules/interface';
-import Game from './modules/game';
-import GetName from './modules/name';
+import Scores from './modules/scores';
+import GameOver from './modules/gameOver';
 
 const config = {
   type: Phaser.AUTO,
@@ -27,9 +30,13 @@ const config = {
     WorldScene,
     BattleScene,
     UIScene,
+    Scores,
+    GameOver,
   ],
 };
 
 const game = new Phaser.Game(config);
+
+window.score = 0;
 
 export default game;

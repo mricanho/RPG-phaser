@@ -51,7 +51,6 @@ export default class GetName extends Phaser.Scene {
       },
     ).setOrigin(0.5);
 
-
     this.backButton.setInteractive();
     this.backButtonAction();
   }
