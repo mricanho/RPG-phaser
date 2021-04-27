@@ -150,7 +150,7 @@ export default class BattleScene extends Phaser.Scene {
       }
       this.warriorHP = this.heroes[0].hp;
       this.mageHP = this.heroes[1].hp;
-    } else if (this.heroes.length === 1 && this.heroes[0].hp > 0) { // heroes.length == 1
+    } else if (this.heroes.length === 1 && this.heroes[0].hp > 0) {
       if (this.heroes[0].type === 'Warrior') {
         this.warriorHP = this.heroes[0].hp + 12;
       } else if (this.heroes[0].type === 'Mage') {
