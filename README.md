@@ -4,6 +4,14 @@ Karen is a big fan of the Jonas Brothers, and now they will be in town. Help Kar
 
 This game was created using the framework Phaser 3 and JavaScript, I add test units with Jest and the functions are modules, best practices incorporated(ES6).
 
+My initial objectives with this game were three:
+
+- Make the game functional
+- Make the game fun
+- Make the game pretty
+
+I succeed in two of them, make the game functional and pretty, but I need more time to make the game fun to play, this could be achieved with more scenes that explain the story, and/or dialogues between the characters, also it could be nice to have more maps, attacks, and items.
+
 This game is optimized for desktops and tablets, mobile isn't a good experience.
 
 ![screenshot](dist/assets/screen-1.jpeg)
