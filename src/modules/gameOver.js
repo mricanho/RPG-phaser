@@ -42,7 +42,7 @@ export default class GameOver extends Phaser.Scene {
     this.add.text(
       game.config.width / 2,
       50,
-      "To be continue", {
+      'To be continue', {
         fill: '#ffffff',
         fontSize: '28px',
         fontFamily: 'sans-serif',

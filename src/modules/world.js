@@ -1,7 +1,6 @@
 /* eslint-disable import/no-cycle */
 
 import Phaser from 'phaser';
-import game from '../index';
 
 export default class WorldScene extends Phaser.Scene {
   constructor() {

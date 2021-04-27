@@ -11,7 +11,7 @@ export default class BattleScene extends Phaser.Scene {
 
   create() {
     // change the background to green
-    this.warriorHP = 90;
+    this.warriorHP = 100;
     this.mageHP = 80;
     this.score = 0;
     this.cameras.main.setBackgroundColor('#FDEDFF');
@@ -50,13 +50,13 @@ export default class BattleScene extends Phaser.Scene {
     this.heroes = [];
     // player character ==> warrior
     if (this.warriorHP > 0) {
-      const warrior = new PlayerCharacter(this, 250, 50, 'player', 1, 'Warrior', this.warriorHP, 12);
+      const warrior = new PlayerCharacter(this, 250, 50, 'player', 1, 'Karen', this.warriorHP, 12);
       this.add.existing(warrior);
       this.heroes = this.heroes.concat(warrior);
     }
     // player character ==> mage
     if (this.mageHP > 0) {
-      const mage = new PlayerCharacter(this, 250, 100, 'player', 4, 'Mage', this.mageHP, 22);
+      const mage = new PlayerCharacter(this, 250, 100, 'player', 4, 'Bestie', this.mageHP, 22);
       this.add.existing(mage);
       this.heroes = this.heroes.concat(mage);
     }
