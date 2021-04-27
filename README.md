@@ -37,8 +37,10 @@ I tried to find good matches for this game, the audios are from an 8-bit version
 #### Enemies
 | Asset  | Enemy |
 | ------------- | ------------- |
-| ![Karen's mother](dist/assets/leidy.png)  | Karen's mother  |
-| Content Cell  | Content Cell  |
+| ![Karen's mother](dist/assets/leidy.png)  | Karen's mother Leidy |
+| ![Karen's mother](dist/assets/re-seller.png)   | Ticket Reseller  |
+| ![Karen's mother](dist/assets/spidey.png)   | Karen's friend Ximena |
+| ![Karen's mother](dist/assets/fan.png)   | Crazy Fan  |
 
 ### Controls
 - Press ⬆️ to move up
