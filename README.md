@@ -81,7 +81,7 @@ Give a star if you :star: like this project!
 
 - Microverse
 - GitHub
-- TheOdinProject
+- Opengameart
 - JavaScript
 
 This project is [MIT](LICENSE) licensed.
