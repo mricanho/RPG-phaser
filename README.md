@@ -38,7 +38,7 @@ I tried to find good matches for this game, the audios are from an 8-bit version
 | Asset  | Heroe_ |
 | ------------- | ------------- |
 | ![Karen](dist/assets/karen.png)  | Karen |
-| ![Karen's mother](dist/assets/re-seller.png)   | Ticket Reseller  |
+| ![Karen's boyfriend](dist/assets/bestie.png)   | Karen's bestie(A.K.A. Her BF)  |
 #### Enemies
 | Asset  | Enemy |
 | ------------- | ------------- |
