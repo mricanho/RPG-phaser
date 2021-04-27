@@ -60,7 +60,7 @@ yarn start
 
 It's super easy to run the tests using Jest, in the root directory, go to your terminal and run:
 ```bash
-yarn jest
+yarn test
 ```
 ## Author
 
