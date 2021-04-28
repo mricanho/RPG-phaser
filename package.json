@@ -1,0 +1,49 @@
+{
+  "name": "rpg-game",
+  "jest": {
+    "setupFiles": [
+      "jest-canvas-mock"
+    ]
+  },
+  "version": "1.0.0",
+  "description": "An RPG game build it with phaser",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "npm run build && webpack-dev-server --port=8000",
+    "test": "jest"
+  },
+  "repository": "git+https://github.com/mricanho/RPG-phaser.git",
+  "author": "Miguel Ricaño",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mricanho/RPG-phaser/issues"
+  },
+  "homepage": "https://github.com/mricanho/RPG-phaser#readme",
+  "dependencies": {
+    "jest": "^26.6.3",
+    "phaser": "^3.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@babel/preset-env": "^7.7.1",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.0.6",
+    "jest-canvas-mock": "^2.3.1",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "raw-loader": "^0.5.1",
+    "stylelint": "^13.13.0",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.19.0",
+    "webpack": "^3.4.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^2.11.0"
+  }
+}
